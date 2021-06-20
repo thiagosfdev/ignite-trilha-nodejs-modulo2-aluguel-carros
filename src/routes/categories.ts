@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
-import { CreateCategoryService } from "../services/CreateCategoryService";
-import { ListAllCategoryService } from "../services/ListAllCategoryService";
+import { CategoriesRepository } from "../modules/car/repositories/CategoriesRepository";
+import { CreateCategoryService } from "../modules/car/services/CreateCategoryService";
+import { ListAllCategoryService } from "../modules/car/services/ListAllCategoryService";
 
 const categoriesRoutes = Router();
 const categoriesRepository = new CategoriesRepository();
@@ -11,6 +11,7 @@ categoriesRoutes.get("/", (request, response) => {
     const listAllCategoryService = new ListAllCategoryService(
         categoriesRepository
     );
+
     return response.status(200).json(listAllCategoryService.execute());
 });
 
